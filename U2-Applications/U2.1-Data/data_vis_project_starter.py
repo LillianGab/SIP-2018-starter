@@ -49,7 +49,14 @@ print(average_subjectivity)
 
 #PART4
 word_dict= {}
+generic_words = ['and', 'a', 'the', 'or', 'i']
 for word in tweetBlob.words:
+    if len(word) < 3:
+        continue 
+    if word.lower() in generic_words:
+        continue 
+    if not word.isalpha():
+        continue
     word_dict[word.lower()] = tweetBlob.word_counts[word.lower()]
 print(word_dict)
 
